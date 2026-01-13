@@ -106,5 +106,5 @@ class MyAtm:              # use pascal case while naming a class
     # functionality -> set pin , change pin , withdraw , check balance 
 
 
-obj = MyAtm()
+obj = MyAtm()  
 obj.menu()

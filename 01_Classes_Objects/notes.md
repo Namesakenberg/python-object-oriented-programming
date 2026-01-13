@@ -66,3 +66,37 @@ In python there are 2 types of clasess -> 1) built in and 2) user defined classe
 ---------------------------------------------------------------------------------------------------------------------------------
 constructor ->it is a special function where variables are created for each instance
 we do not need to call the constructor of a class manually , when we create an object for the class the constructor is called.
+
+----------------------------------------------------------------------------------------------------------------------------------
+Methods vs Fucntion : 
+All the functions present inside the Class are called as METHODS and the functions present outside of the class are called as 
+functions 
+
+eg -> L = [1,2,3]
+len(L) -> is a function 
+L.append(4) -> is a method 
+
+len(L) is a function because , when we do L. we do not see the option length
+---------------------------------------------------------------------------------------------------------------------------------
+any created class can be represented by a diagram 
+
+![alt text](image.png)
+----------------------------------------------------------------------------------------------------------------------------------
+MAGIC METHODS / Dunder Methods 
+magic methods are special methods , every magic methods has a super power , it is represented using 
+
+__methodname__ 
+
+eg-> constructor -> __init__ is a magic method and its superpower is that it can be implemented without calling , it can be impemented by creating an object of the class 
+----------------------------------------------------------------------------------------------------------------------------------
+Detailed discussion on constructor : 
+1) What is a constructor
+-> Constructor is a method , but it is a special one , and we do not need to call it , it is triggered when the object is called.
+
+2) what is the benifit of constructor ? 
+-> since the code inside the constuctor is implemented whenever new instance is created , all the basic attributes and other basic implementations which are must for every object can be wirtten in the constructor , thus whenever we create a new object we do not need to repeat the things evertime , thus we follow the DRY principle.
+Also all those things in the application whose control we dont want to give to the user will be present in the constructor . 
+
+eg -> configuration related code (eg-> connecting to database)
+
+3) we cannot rename constructor in python , the only name for the constructer in python is __init__
