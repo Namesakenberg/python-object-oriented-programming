@@ -2,76 +2,104 @@
 
 class MyAtm:              # use pascal case while naming a class
     def __init__(self):   # this is a constructor -> this is a place where variables are created for each instance , w
-        self.account_number = None
-        self.pin = ''
-        self.balance = 0
+
+        print('ENTER DETAILS TO CREATE AN ACCOUNT')
+
+        acc_no = str(input('enter a 3 digit account number : '))
+        if len(acc_no)!=3 or not acc_no.isdigit():
+            print('Invalid entry')
+            # add exception here for invalid entry
+            
+        self.account_number = acc_no
+
+        print('Set your pin')
+        new_pin = input("enter a 4 digit pin : ")
+
+        # validity check
+        if len(new_pin)!=4 or not new_pin.isdigit():
+            print('Invalid PIN')
+            # add exception for invalid pin 
+
+        self.pin = new_pin
+        print('PIN created successfully')
 
 
+        initial_balance = int(input('add an amount greater than 1000 as initial balance : '))
+        if initial_balance<1000:
+            print('enter amount greater than 1000')
+            return
+        self.balance = initial_balance
+        
+        
     def menu(self):
         while True:
             input_option = int(input(
                 "What would you like to continue with:\n"
-                "1: Set PIN\n"
-                "2: Change PIN\n"
-                "3: withdraw\n"
-                "4: Check Balance\n"
-                "5: Exit\n"
+                "1: Change PIN\n"
+                "2: withdraw\n"
+                "3: Check Balance\n"
+                "4: Exit\n"
             ))
         
-            if input_option == 1 : 
-                self.set_pin()
-            elif input_option == 2 :
+            if input_option == 1 :
                 self.change_pin()
-            elif input_option==3:
+            elif input_option==2:
                 self.withdraw()
-            elif input_option == 4:
+            elif input_option == 3:
                 self.check_balance()
-            elif input_option == 5:
+            elif input_option == 4:
                 break
             else:
                 print("invalid input")
                 
-    
-    def set_pin(self):
-        if len(self.pin) != 0:
-            print('a pin is already created to change the current pin , press 2')
-            self.menu()
-    
-        new_pin = input("enter new 4 digit pin : ")
-        
-        if len(new_pin)!=4 or  any(ch.isalpha() for ch in new_pin)  or any(not ch.isalnum() for ch in new_pin) :
-            print('new pin is not valid')
-            self.menu()
 
+    
+    def confirm_pin(self):
+        # confirm old pin 
+        check_pin = str(input('Enter the current PIN : '))
+        if check_pin == self.pin:
+            return True 
         else:
-            self.pin = new_pin
-            print('a pin is created')
-
+            print('incorrect pin')
+            return False 
 
     def change_pin(self):
+        if not self.confirm_pin():
+            return
+    
+        new_pin = str(input("enter new 4 digit pin : "))
 
-        new_pin = input("enter new 4 digit pin : ")
-
-        if len(new_pin)!=4 or any(ch.isalpha() for ch in new_pin)  or any(not ch.isalnum() for ch in new_pin) :
+        if len(new_pin)!=4 or not new_pin.isdigit() :
             print('new pin is not valid')
-            
+            return
+        if new_pin == self.pin:
+            print('New PIN cannot be same as old PIN')
+            return
 
-        elif len(self.previous_pins)==0:
-            print("no pin set thus creating a new pin :")
-            self.pin= self.set_pin()
-            print("new pin set ")
-
-        else:
-            self.pin = new_pin
-
-        
-        
+        self.pin = new_pin
+        print('PIN changed successfully')
+                    
 
     def withdraw(self):
-        pass
+        if not self.confirm_pin():
+            return
+        need = int(input('enter the amount to be withdrawn'))
+        if need > self.balance:
+            print('insufficient balance')
+            return
+        if need <= 0:
+            print('invalid amount')
+            return
+        else:
+            self.balance-=need
+            print(f'withdrawn {need} remaining balance is {self.balance}')
+
     
     def check_balance(self):
-        pass
+        if not self.confirm_pin():
+            return  
+        else:
+            print(f"current balance : {self.balance}")
     
     
 
