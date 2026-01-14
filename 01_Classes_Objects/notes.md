@@ -84,9 +84,9 @@ any created class can be represented by a diagram
 ----------------------------------------------------------------------------------------------------------------------------------
 MAGIC METHODS / Dunder Methods 
 magic methods are special methods , every magic methods has a super power , magic method's naming format is :
-__methodname__ 
+_methodname_ 
 
-eg-> constructor -> __init__ is a magic method and its superpower is that it can be implemented without calling , it can be impemented by creating an object of the class 
+eg-> constructor -> _init_ is a magic method and its superpower is that it can be implemented without calling , it can be impemented by creating an object of the class 
 ----------------------------------------------------------------------------------------------------------------------------------
 Detailed discussion on constructor : 
 1) What is a constructor
@@ -98,8 +98,20 @@ Also all those things in the application whose control we dont want to give to t
 
 eg -> configuration related code (eg-> connecting to database)
 
-3) we cannot rename constructor in python , the only name for the constructer in python is __init__
------------------------------------------------------------------------------------------------------------------------------------
+3) we cannot rename constructor in python , the only name for the constructer in python is _init_
+
+
+4) parameterized constructor and non parameterized constructors-> 
+constructors which do not take any other parameter as input other than self is called as a non parameterized constructor 
+and 
+constructors which take other parameters as input other than self are the parameterized constructors 
+
+eg - > 
+non parameterized :  def _init_(self):
+
+parameterized : def _init_(self,numerator,denominator)
+
+----------------------------------------------------------------------------------------------------------------------------------
 Concept of self :
 
 self is a default parameter passed to every method present in the class eg -> def withdraw(self) , def change_pin(self) etc
@@ -117,4 +129,4 @@ self actually is the object of the class.
 when we create an object the location of the self and the object is same , this proves that self is nothing but the current instance i.e the current object 
 
 if incase we do not write self as a parameter while creating a method , when we create an object and call that method , we get an error saying : TypeError: show() takes 0 positional arguments but 1 was given
-this error occurs because , whenever an method is called , python's functionality will naturally pass the object to the function , and since self is not present in the method , we get the above error 
+this error occurs because , whenever an method is called , python's functionality will naturally pass the object to the function , and since self is not present in the method , we get the above error.
