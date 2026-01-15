@@ -6,7 +6,8 @@ OOP is Object oriented programming
 what problem does OOP solve ? 
 -> the normal code we write is genral code (top to bottom),but when we use OOP concepts , we write more specific code ,thus OOP helps us to move from generality to specificity.
 
-* OOP gives the programmer an ability to create its own data types -> this is important and main advantage of oop 
+* OOP gives the programmer an ability to create its own data types -> this is important and is the main advantage of oop.
+
 thus,
 
 what is OOP ?
@@ -63,7 +64,7 @@ eg -> a course will only be conducted if students enroll in it , if no student e
 thus without an object the class cannot be executed
 ----------------------------------------------------------------------------------------------------------------------------------
 In python there are 2 types of clasess -> 1) built in and 2) user defined classes 
----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
 constructor ->it is a special function where variables are created for each instance
 we do not need to call the constructor of a class manually , when we create an object for the class the constructor is called.
 
@@ -130,3 +131,42 @@ when we create an object the location of the self and the object is same , this 
 
 if incase we do not write self as a parameter while creating a method , when we create an object and call that method , we get an error saying : TypeError: show() takes 0 positional arguments but 1 was given
 this error occurs because , whenever an method is called , python's functionality will naturally pass the object to the function , and since self is not present in the method , we get the above error.
+----------------------------------------------------------------------------------------------------------------------------------
+we know that once an object of a class is created , it can access all the attributes and methods of the given class , and if we call a method which does not exist in the class , we get an error. 
+
+**But we can also create or update an attribute for the object from outside of the function class.**
+
+so we can add attributes dynamically , but not call the methods which dont exist.
+
+this behaviour of updating or creating from outside the class , is only valid for the attributes of the class and not for the methods.
+----------------------------------------------------------------------------------------------------------------------------------
+Concept of Reference variables: 
+
+1> What is a reference variable ? 
+-> 
+while creating an object for a class , we usually do :
+variable = Classname()  eg -> p1 = person().
+
+now when we do :  p1 = person() , we say that p1 is an object of class person.
+but in reality , p1 is a variable which just stores the address of the object created by calling  person().
+
+thus : p1 is just a reference variable
+
+thus , if we just call person() , an object will still be created at some address in the memory. 
+
+and when we do p1 = person() , p1 stores the address where the object is created in the memory.
+so we can also do : 
+p1 = person()       -> p1 stores the address of the object created
+p2 = p1             -> p2 equals p1 , thus both point to the same object in the memory
+
+thus if p2 is changed , p1 will also get changed and vice versa , as they both point to the same thing in the memory.
+this behaviour can be risky 
+
+Thus: 
+1) Reference variables hold references to the objects 
+2) We can create objects without reference variables as well
+3) An object can have multiple reference variables 
+4) assigning a new reference variable to an existing object does not create a new object
+
+
+objects of user defined classes are mutable , whever any changes are made , they are made in place on the same address
