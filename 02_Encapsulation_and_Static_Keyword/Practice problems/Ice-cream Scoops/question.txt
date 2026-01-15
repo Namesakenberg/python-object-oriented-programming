@@ -1,0 +1,12 @@
+ Ice-Cream Scoops and Bowl shop
+Create a class Scoop which has one public property flavor and one private proptery price. Take flavor values during object creation.
+
+Create a class Bowl with private prperty scoop_list which will have list of scoopd object.
+
+Create a method add_scoops in Bowl class which will add any no of Scoop objects given as parameter and store it in scoops_list.
+
+Make getter and setter method for price property.
+
+Make a method display to display flavour and price of each Scoop in scoop_list and print total price of the bowl by adding all flavour scoops prices.
+
+Make a method sold in both Scoop class and Bowl class to print no of quantity sold.

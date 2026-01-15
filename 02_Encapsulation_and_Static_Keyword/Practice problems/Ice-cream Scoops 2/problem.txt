@@ -1,0 +1,7 @@
+Making advancement in the above classes. Scoop and Bowl
+
+Introduce a property max_scoops in Bowl class to signify maximum scoops that a bowl can have, exceeding that it will display Bowl is full. Take default value as 3.
+
+no_of_scoop in Scoop class with default value of 1
+
+Print <flavour> added with every scoop added.

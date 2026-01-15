@@ -1,17 +1,13 @@
 # implementing the atm machine 
 
 class MyAtm:              # use pascal case while naming a class
+    __accountnumber = 99
     def __init__(self):   # this is a constructor -> this is a place where variables are created for each instance , w
 
         print('ENTER DETAILS TO CREATE AN ACCOUNT')
-
-        acc_no = str(input('enter a 3 digit account number : '))
-        if len(acc_no)!=3 or not acc_no.isdigit():
-            print('Invalid entry')
-            # add exception here for invalid entry
-            
-        self.account_number = acc_no
-
+        self.__accountnumber = MyAtm.__accountnumber
+        self.__accountnumber+=1
+        
         print('Set your pin')
         new_pin = input("enter a 4 digit pin : ")
 
@@ -20,17 +16,29 @@ class MyAtm:              # use pascal case while naming a class
             print('Invalid PIN')
             # add exception for invalid pin 
 
-        self.pin = new_pin
+        self.__pin = new_pin
         print('PIN created successfully')
 
 
         initial_balance = int(input('add an amount greater than 1000 as initial balance : '))
         if initial_balance<1000:
-            print('enter amount greater than 1000')
             return
-        self.balance = initial_balance
+        else:
+            self.__balance = initial_balance
+    
         
-        
+    # getter and setters for balance
+    def get_balance(self):
+        return self.__balance
+
+    def set_balance(self,new_value):
+        self.__balance = new_value
+
+
+    @staticmethod       # this is an static method 
+    def get_account_number():   # we do not pass , self here as a parameter as the static variable is at class level 
+        return MyAtm.__accountnumber     # thus we call this static variable using class name and not object name 
+
     def menu(self):
         while True:
             input_option = int(input(
@@ -57,7 +65,7 @@ class MyAtm:              # use pascal case while naming a class
     def confirm_pin(self):
         # confirm old pin 
         check_pin = str(input('Enter the current PIN : '))
-        if check_pin == self.pin:
+        if check_pin == self.__pin:
             return True 
         else:
             print('incorrect pin')
@@ -72,11 +80,11 @@ class MyAtm:              # use pascal case while naming a class
         if len(new_pin)!=4 or not new_pin.isdigit() :
             print('new pin is not valid')
             return
-        if new_pin == self.pin:
+        if new_pin == self.__pin:
             print('New PIN cannot be same as old PIN')
             return
 
-        self.pin = new_pin
+        self.__pin = new_pin
         print('PIN changed successfully')
                     
 
@@ -84,22 +92,22 @@ class MyAtm:              # use pascal case while naming a class
         if not self.confirm_pin():
             return
         need = int(input('enter the amount to be withdrawn'))
-        if need > self.balance:
+        if need > self.__balance:
             print('insufficient balance')
             return
         if need <= 0:
             print('invalid amount')
             return
         else:
-            self.balance-=need
-            print(f'withdrawn {need} remaining balance is {self.balance}')
+            self.__balance-=need
+            print(f'withdrawn {need} remaining balance is {self.__balance}')
 
     
     def check_balance(self):
         if not self.confirm_pin():
             return  
         else:
-            print(f"current balance : {self.balance}")
+            print(f"current balance : {self.__balance}")
     
     
 
@@ -107,4 +115,10 @@ class MyAtm:              # use pascal case while naming a class
 
 
 obj = MyAtm()  
-obj.menu()
+print(obj.get_balance())
+obj.set_balance(10000000000000)
+print("updated balance")
+print(obj.get_balance())
+
+print(obj.get_account_number())
+print(MyAtm.accountnumber)

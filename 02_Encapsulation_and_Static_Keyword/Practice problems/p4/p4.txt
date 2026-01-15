@@ -1,0 +1,4 @@
+Q-4: Problem 4
+Statement: Write a program that uses datetime module within a class. 
+Enter manufacturing date and expiry date of the product.
+The program must display the years, months and days that are left for expiry.
