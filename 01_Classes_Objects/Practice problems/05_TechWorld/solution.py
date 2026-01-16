@@ -1,8 +1,3 @@
-# allocate courses to the instructors
-# instructor has -> name , tech skills , experience, avg feedback  -> all private 
-# eligiblity -> 
-# 
-
 class TechWorld:
     def __init__(self,name,technology,experience,feeback):
         self.__name = name
