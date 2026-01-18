@@ -91,3 +91,5 @@ thus to avoid this , we make the static variable private , and use getter and se
 thus if we make a getter method for an static variable , it will return classname.variablename , thus even if we do not pass "self" as a parameter to such method , it is completely okay. 
 but while accessing such methods , we should access them using the class name and not the variable name .
 and such methods are called as static method , and we use static method decorator 
+
+-----------------------------------------------------------------------------------------------------------------

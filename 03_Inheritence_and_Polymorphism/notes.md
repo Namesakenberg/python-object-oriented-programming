@@ -36,7 +36,7 @@ thus a 'has-a' relationship exists
 now , if we make the pincode variable of the address class private , then we wont be able to pass the adderess's object correctly to the Customer class 
 but if we make a getter in address and call it in the customer class , we can still get the result.
 
----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Inheritence
 
@@ -62,3 +62,59 @@ where student class will only have enroll and review
 and the teacher class will only have create_course and reply
 
 the code becomes clean and properly implemented 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+what gets inherited from the parent class when a child class is created : 
+1) Constructor
+2) Non Private attributes 
+3) Non private methods 
+
+
+**IMPORTANT** -> 
+whenever we create an onject of the sutdent class , first it looks for the constructor in the student class , if it finds one , it executes the child's constructor and does not go to the parents constructor ,
+but if it does not find the constructor in the child class it will go to the parent class and execute the constructor of the parent class
+
+object of the child class cannot access the private attributes and the methods of the parent class 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+method overriding : 
+if we have a method in the child class , which has the same name as the method in the parent class .
+and if we create a child object and execute the method , then the method in the CHILD class will be executed.
+this is the thing similar to the previous point :
+i.e if parent and child both have constructor in them , then the childs constructor will be executed and the code will never execute the parents constructor.
+like-wise if same methods are present in both the child and parent class , then the method in the child class will be executed.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+super keyword : 
+the super keyword is used to call the methods of parent class from the child class.
+super() is not meant to access the parents attributes
+
+thus from the child class we can do : super().parentmethod , to call the method in the parent class
+
+thus when we are in the child class , we get the parent's initialized attributes by using super().__init__(other variable names) ,
+and then if we want new variables for the child class , we can get them 
+
+we cannot use the super keyword from outside the child class   
+
+---------------------------------------------------------------------------------------------------------------------------------------
+Inheritance summary:
+
+1) A class can inherit from another class
+2) Inheritence helps in code reuse
+3) Constructors , attributes and methods get inherited to the child class.
+4) The parent has no access to the child class
+5) Private properties of the parent are not accessible directly to the child class
+6) child class can override the attributes or methods , this is called as method overriding
+7) super() is the keyword used to invoke the parent class's methods and constructor
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+Types of inheritence :
+
+1) Single inheritence -> 1 parent and 1 child , and child inherits from parent
+2) Multilevel inheritence -> A chain exists , like grandfather->father->child ,child can inherit from all the ancestors
+3) Hierarchical inheritence -> One parent and multiple children 
+4) Multiple Inheritence -> is not present in java (due to ambiguity), multiple parents for a child 
+5) Hybrid Inheritence -> Combination of the above cases
