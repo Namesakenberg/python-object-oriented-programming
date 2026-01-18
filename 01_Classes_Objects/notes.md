@@ -129,12 +129,12 @@ self.confirm_pin to access the confirm_pin method from other methods of the same
 self actually is the object of the class. 
 when we create an object the location of the self and the object is same , this proves that self is nothing but the current instance i.e the current object 
 
-if incase we do not write self as a parameter while creating a method , when we create an object and call that method , we get an error saying : TypeError: show() takes 0 positional arguments but 1 was given
+if incase we do not write self as a parameter while creating a method , when we create an object and call that method , we get an error saying : TypeError: method() takes 0 positional arguments but 1 was given
 this error occurs because , whenever an method is called , python's functionality will naturally pass the object to the function , and since self is not present in the method , we get the above error.
 ----------------------------------------------------------------------------------------------------------------------------------
 we know that once an object of a class is created , it can access all the attributes and methods of the given class , and if we call a method which does not exist in the class , we get an error. 
 
-**But we can also create or update an attribute for the object from outside of the function class.**
+**But we can also create or update an attribute for the object from outside of the class.**
 
 so we can add attributes dynamically , but not call the methods which dont exist.
 
