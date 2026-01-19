@@ -1,0 +1,2 @@
+Write a program with class Bill. 
+The users have the option to pay the bill either by cheque or by cash. Use the inheritance to model this situation.

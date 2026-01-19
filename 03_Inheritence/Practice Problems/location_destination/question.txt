@@ -1,0 +1,3 @@
+Write a program that has a class Point. 
+Define another class Location which has two objects (Location & Destination) of class Point. 
+Also define a function in Location that prints the reflection of Destination on the x axis.
