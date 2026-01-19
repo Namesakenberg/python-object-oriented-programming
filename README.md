@@ -1,1 +1,2 @@
-This repository contains the code and theory learnt while learning Object oriented programming in python.
+This repository is a structured revision guide for Object-Oriented Programming (OOP) in Python.
+It contains clear notes, practice questions, and hands-on coding exercises designed to build strong conceptual understanding and interview readiness.
