@@ -10,3 +10,28 @@ Make getter and setter method for price property.
 Make a method display to display flavour and price of each Scoop in scoop_list and print total price of the bowl by adding all flavour scoops prices.
 
 Make a method sold in both Scoop class and Bowl class to print no of quantity sold.
+
+choco = Scoop('chocolate')
+print(choco)
+choco.set_price(100)
+
+berry = Scoop('berry')
+berry.set_price(120)
+print(berry)
+
+vanilla = Scoop('vanilla')
+vanilla.set_price(150)
+
+bowl = Bowl()
+
+bowl.add_scoops(choco) # Giving one parameter
+bowl.add_scoops(berry, vanilla) # Multiple
+# add_scoops should handle both scenerios
+
+print(bowl)
+
+bowl.display()
+
+Scoop.sold()
+Bowl.sold()
+

@@ -5,3 +5,61 @@ Introduce a property max_scoops in Bowl class to signify maximum scoops that a b
 no_of_scoop in Scoop class with default value of 1
 
 Print <flavour> added with every scoop added.
+
+# Testing Code-1 
+
+choco = Scoop('chocolate', 1)
+choco.set_price(100)
+print(choco)
+
+
+berry = Scoop('berry', 2)
+berry.set_price(120)
+print(berry)
+
+vanilla = Scoop('vanilla') # no of scoop parameter not given, will take default value
+vanilla.set_price(150)
+print(vanilla)
+
+Output:
+
+Flavor - chocolate, No of Scoops - 1, Price - 100
+Flavor - berry, No of Scoops - 2, Price - 120
+Flavor - vanilla, No of Scoops - 1, Price - 150
+
+
+
+Testing code-2 considering above test code executed
+
+bowl1 = Bowl() # max_scoop parameter not given, will take default value
+bowl1.add_scoops(choco) # Giving one parameter
+bowl1.add_scoops(berry, vanilla) # Multiple
+bowl1.display()
+Output
+
+chocolate added
+berry added
+Bowl is full
+Dsiplaying Bowl-1
+Flavor - chocolate, No of Scoops - 1, Price - 100
+Flavor - berry, No of Scoops - 2, Price - 120
+Price of Bowl-1: 340
+Testing code-3, considering above tests executed
+
+# Tetsing code-3
+
+bowl2 = Bowl(2)
+bowl2.add_scoops(berry)
+bowl2.add_scoops(choco)
+
+bowl2.display()
+Bowl.sold()
+
+Output:
+
+berry added
+chocolate not added. Bowl is full!!
+Dsiplaying Bowl-2
+Flavor - berry, No of Scoops - 2, Price - 120
+Price of Bowl-2: 240
+2 bowls sold
