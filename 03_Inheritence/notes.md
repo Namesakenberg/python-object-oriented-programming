@@ -1,120 +1,200 @@
-Class reationships :
+# Class Relationships in Python
 
-whenever we make a big systems ,  we would have a lot of classes ,
-and these classes will interact with each other.
-thus the clasess will have some sort of relationships 
+## Introduction
 
-there are 2 types of relationships :  1) aggregation , 2) inheritance
+Whenever we build big systems, we have many classes, and these classes interact with each other.
 
+Thus, classes have relationships among them.
 
-1) Aggregation : 
+There are **two main types of relationships**:
 
-Aggregation means "has-a" relationship , thus one class owns the other class
-eg -> if a class "address" is used in a class "customer" then , customer class owns the address class
-thus customer has a adderess . 
-such relations are called aggregation.
+1. Aggregation
+2. Inheritance
 
-check the code example.py 
+---
 
-where 
-the main class Customer which has a field address , but this address itself is a complex entity 
-thus the variable in which address is stored , is a class 
-now to have a customer's address in the address variable , 
-we have to create an object of the address class , and then pass this object as an parameter to the customer class.
+## 1) Aggregation
 
-in this way address class is used in the customer class 
+Aggregation represents a **"has-a" relationship**, where one class owns or uses another class.
 
-thus using aggregation we can pass an object of a class as a prameter to another class.
+### Example
 
+If a class **Address** is used inside a class **Customer**, then:
 
+* Customer **has an Address**
+* Customer owns the Address
 
-Definition :
-Aggregation : When two classes exist, and one class uses an object of another class (passed from outside), it is called aggregation.
-thus a 'has-a' relationship exists 
+Such relationships are called **aggregation**.
 
+---
 
-now , if we make the pincode variable of the address class private , then we wont be able to pass the adderess's object correctly to the Customer class 
-but if we make a getter in address and call it in the customer class , we can still get the result.
+### Code Concept (example.py)
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The main class `Customer` has a field `address`.
 
-Inheritence
+The `address` itself is a complex entity, so the variable storing it is an **object of another class**.
 
-inspired from real world , inheritance has a parent class and a child class , thus an object created from the child class will be able to access all the methods and attributes of the parent class.
+To assign an address to a customer:
 
-the main objective of inheritence is code resuablility (DRY).
+1. Create an object of the `Address` class
+2. Pass this object as a parameter to the `Customer` class
 
-example usecase : 
+In this way, the `Address` class is used inside the `Customer` class.
 
-Consider a online teching-learning platform like Udemy , 
-now to implement such system , we have 2 classes 1)Student class 2) Instructor class
-in the student class , the methods are : 
-Login , Register , enroll , review 
-and in the instructor class the methods are :
-Login , Register , create_course , reply
+Thus, using aggregation, we can pass an **object of one class as a parameter to another class**.
 
-now in the above architecture of class , since both student and teacher will Login and Register , the code in both the classes violates the DRY principle and hence it is not a good coding practice 
+---
 
-instead : 
-if we create a parent class => User 
-and 2 child classes -> Student and Techer 
-where student class will only have enroll and review 
-and the teacher class will only have create_course and reply
+### Aggregation Definition
 
-the code becomes clean and properly implemented 
+Aggregation occurs when two classes exist and one class uses an object of another class (passed from outside). This forms a **has-a relationship**.
 
+---
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Important Note on Private Variables
 
-what gets inherited from the parent class when a child class is created : 
-1) Constructor
-2) Non Private attributes 
-3) Non private methods 
+If we make the `pincode` variable of the `Address` class private, we will not be able to access it directly from the `Customer` class.
 
+However, if we create a **getter method** in the `Address` class and call it inside the `Customer` class, we can still access the value.
 
-**IMPORTANT** -> 
-whenever we create an onject of the sutdent class , first it looks for the constructor in the student class , if it finds one , it executes the child's constructor and does not go to the parents constructor ,
-but if it does not find the constructor in the child class it will go to the parent class and execute the constructor of the parent class
+---
 
-object of the child class cannot access the private attributes and the methods of the parent class 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## 2) Inheritance
 
-method overriding : 
-if we have a method in the child class , which has the same name as the method in the parent class .
-and if we create a child object and execute the method , then the method in the CHILD class will be executed.
-this is the thing similar to the previous point :
-i.e if parent and child both have constructor in them , then the childs constructor will be executed and the code will never execute the parents constructor.
-like-wise if same methods are present in both the child and parent class , then the method in the child class will be executed.
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Inheritance is inspired by the real world. It consists of a **parent class** and a **child class**.
 
-super keyword : 
-the super keyword is used to call the methods of parent class from the child class.
-super() is not meant to access the parents attributes
+An object created from the child class can access the **non-private attributes and methods** of the parent class.
 
-thus from the child class we can do : super().parentmethod , to call the method in the parent class
+The main objective of inheritance is **code reusability (DRY principle)**.
 
-thus when we are in the child class , we get the parent's initialized attributes by using super().__init__(other variable names) ,
-and then if we want new variables for the child class , we can get them 
+---
 
-we cannot use the super keyword from outside the child class   
+### Example Use Case
 
----------------------------------------------------------------------------------------------------------------------------------------
-Inheritance summary:
+Consider an online teaching-learning platform like **Udemy**.
 
-1) A class can inherit from another class
-2) Inheritence helps in code reuse
-3) Constructors , attributes and methods get inherited to the child class.
-4) The parent has no access to the child class
-5) Private properties of the parent are not accessible directly to the child class
-6) child class can override the attributes or methods , this is called as method overriding
-7) super() is the keyword used to invoke the parent class's methods and constructor
+We initially define two classes:
 
----------------------------------------------------------------------------------------------------------------------------------------
+**Student class methods:**
 
-Types of inheritence :
+* Login
+* Register
+* Enroll
+* Review
 
-1) Single inheritence -> 1 parent and 1 child , and child inherits from parent
-2) Multilevel inheritence -> A chain exists , like grandfather->father->child ,child can inherit from all the ancestors
-3) Hierarchical inheritence -> One parent and multiple children 
-4) Multiple Inheritence -> is not present in java (due to ambiguity), multiple parents for a child 
-5) Hybrid Inheritence -> Combination of the above cases
+**Instructor class methods:**
+
+* Login
+* Register
+* Create course
+* Reply
+
+Here, `Login` and `Register` are duplicated, violating the **DRY principle**.
+
+---
+
+### Improved Design Using Inheritance
+
+Create a parent class:
+
+* **User**
+
+Create child classes:
+
+* **Student** → Enroll, Review
+* **Teacher** → Create course, Reply
+
+Now, common functionality like `Login` and `Register` exists only in the parent class, resulting in cleaner and reusable code.
+
+---
+
+## What Gets Inherited from the Parent Class?
+
+When a child class is created, it inherits:
+
+1. Constructor
+2. Non-private attributes
+3. Non-private methods
+
+---
+
+### Important Constructor Behavior
+
+When an object of the child class is created:
+
+* Python first looks for a constructor in the **child class**
+* If found, the child constructor is executed
+* The parent constructor is NOT executed
+
+If the child class does not have a constructor, Python executes the **parent class constructor**.
+
+---
+
+### Access Restrictions
+
+* A child object **cannot access private attributes or methods** of the parent class directly.
+
+---
+
+## Method Overriding
+
+If a child class has a method with the **same name** as a method in the parent class:
+
+* The child’s method overrides the parent’s method
+* When called using a child object, the **child’s method executes**
+
+This behavior is similar to constructor overriding.
+
+---
+
+## `super` Keyword
+
+The `super` keyword is used to call **parent class methods** from the child class.
+
+`super()` is **not meant to access parent attributes directly**.
+
+---
+
+### Using `super()`
+
+From the child class, we can:
+
+* Call parent methods using:
+
+  ```
+  super().parent_method()
+  ```
+
+* Initialize parent attributes using:
+
+  ```
+  super().__init__(arguments)
+  ```
+
+After calling the parent constructor, we can define additional child-specific variables.
+
+**Important:**
+
+* `super()` cannot be used from outside the child class
+
+---
+
+## Inheritance Summary
+
+1. A class can inherit from another class
+2. Inheritance helps in code reuse
+3. Constructors, attributes, and methods are inherited by the child class
+4. Parent class has no access to the child class
+5. Private properties of the parent are not accessible directly to the child
+6. Child class can override parent methods (method overriding)
+7. `super()` is used to invoke parent class methods and constructors
+
+---
+
+## Types of Inheritance
+
+1. **Single Inheritance** → One parent and one child
+2. **Multilevel Inheritance** → Chain of inheritance (Grandparent → Parent → Child)
+3. **Hierarchical Inheritance** → One parent, multiple children
+4. **Multiple Inheritance** → Multiple parents for a child (not supported in Java due to ambiguity)
+5. **Hybrid Inheritance** → Combination of multiple inheritance types

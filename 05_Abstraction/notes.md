@@ -1,29 +1,94 @@
-Abstarction => Means hidden
+# Abstraction in Python
 
-eg-> 
-our laptop , which has a lot of internal circuits but to use a laptop we dont need to know the underlying things 
+## What is Abstraction?
+
+Abstraction means **"hidden"**.
+
+**Example:**
+A laptop has many internal circuits and components, but to use a laptop, we do not need to know how those internal parts work.
+
+---
+
+## Abstraction Explained
 
 Abstraction is about:
-Exposing only what is necessary and hiding implementation details, while defining what a class must do, not how it does it.
 
-Abstract class -> a class which has alteast one abstract method
-Abstract method -> methods in which no code is written
+* Exposing only what is necessary
+* Hiding implementation details
+* Defining **what** a class must do, not **how** it does it
 
+---
 
+## Abstract Class
 
-example usecase and explanation : 
+An **abstract class** is a class that has **at least one abstract method**.
 
-consider we have a class bankApp , this bank app is the parent class , and it will have 2 child classes: 
-1) the web_app 
-2) the mobile_app
+---
 
-now the bankApp contains the code (eg-> database connectivity), which will be used by both the child classes.
-now if we make the BankApp class an abstract class , then  , the BankApp class will say to the child classes that : 
-before inheriting me , implement the abstract method .
-here **abstract method will be some method which must be implemented by both the child classes before inheriting the methods from the parent class** (eg->securituy authentication)
+## Abstract Method
 
-thus in this case , 
-the BankApp class is an Abstract class ,  which has the abstract method (security authentication) 
-thus for the child classes web app and the mobile app , abstract method must be implemented, then only the methods of the BankApp can be inherited 
+An **abstract method** is a method in which **no code is written**.
 
-abstract method will be empty in the abstract class , as the implementation of the abstract method can be different in the child classes 
+The implementation of an abstract method is expected to be provided by the child classes.
+
+---
+
+## Example Use Case and Explanation
+
+Consider a class `BankApp`.
+
+This `BankApp` class is a **parent class**, and it has two child classes:
+
+1. WebApp
+2. MobileApp
+
+---
+
+### Role of the Parent Class (BankApp)
+
+The `BankApp` class contains common code that is shared by both child classes.
+
+**Example:**
+
+* Database connectivity
+* Common banking logic
+
+---
+
+### Making BankApp an Abstract Class
+
+If we make the `BankApp` class an **abstract class**, it enforces a rule on the child classes:
+
+> Before inheriting me, you must implement my abstract methods.
+
+---
+
+### Abstract Method Responsibility
+
+The abstract method represents behavior that:
+
+* Must exist in every child class
+* Can have different implementations in different child classes
+
+**Example:**
+
+* Security authentication
+
+---
+
+### How This Works
+
+* `BankApp` (abstract class) declares an abstract method like `security_authentication`
+* The abstract method has **no implementation** in `BankApp`
+* Both `WebApp` and `MobileApp` must implement this method
+* Only after implementing the abstract method can they inherit and use other methods of `BankApp`
+
+---
+
+## Key Takeaway
+
+* `BankApp` → Abstract class
+* `security_authentication` → Abstract method
+* `WebApp` and `MobileApp` → Concrete child classes
+
+Abstract methods remain empty in the abstract class because their implementation depends on the specific behavior required in each child class.

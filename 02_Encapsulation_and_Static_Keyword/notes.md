@@ -1,95 +1,158 @@
-before encapsulation ->
+# Encapsulation in Python
 
-what is an instance variable : 
-the variables which have different values for different object , is called as an instance variable.
-Thus , in an constructor , all the variables are having self in them are instance variables , as they hold different values for 
-different objects
+## Before Encapsulation
 
-----------------------------------------------------------------------------------------------------------------------------------
-Encapsulation -> One of the core pillars of OOP
+### What is an Instance Variable?
 
-What is the need of encapsulation / what problem does encapsulation solve ?
--> 
-once a class is made , it will have some attributes and methods in it. 
-now when we create an object , eg -> obj1 = classname()  , and do "obj1." we can see a dropdown containing all the methods and attributes,
-now after creating an object we can chage the value of the attributes / variables from outside of the class which can cause a lot of problem . 
-thus to ensure safety and not allow attributes to be changed from outside of the class , we make the variables PRIVATE.
- 
-in python we use __ infront of the variable name to make it private. 
+Variables which have different values for different objects are called **instance variables**.
 
-eg -> self.__pin
+Thus, in a constructor, all the variables that have `self` in them are instance variables because they hold different values for different objects.
 
-we can even make methods private by using __ infornt of its name.
+---
 
-once a variable / method has been made private , we do not see these in the dropdown after "obj1.".
+## Encapsulation — One of the Core Pillars of OOP
 
-----------------------------------------------------------------------------------------------------------------------------------
-what happens internally on creating a private variable  
+### What is the Need for Encapsulation?
 
-whenever we make a private variable , in memory the name of the variable changes , and is updated in the format : _classsname__variablename
+Once a class is created, it will have some attributes and methods.
 
-thus self.__pin is now _Atm__pin
+When we create an object:
 
-thus the variable has been renamed. 
+```
+obj1 = classname()
+```
 
-now when we change the value of this private variable from outside , the changes are made to the variable which does not exist as the name has changed when we made the private variable.
-the code will completely run on the new name.
+and type `obj1.`, we see a dropdown containing all the methods and attributes.
 
+After creating an object, we can change the value of the attributes/variables from outside the class, which can cause problems.
 
-thus changes made to __pin from outside of the class wont affect the program as the program does not run on __pin , instead it runs on _Atm__pin
+Thus, to ensure safety and prevent attributes from being changed externally, we make the variables **private**.
 
-thus even if the value of the __attribute is changed , nothing will happen as code runs on _classname__varaiblename.
+In Python, we use `__` in front of the variable name to make it private.
 
+**Example:**
 
-BUT
-**if we change the value of private variable using the name in format _classname__varaiblename from outside the class , we can change the value of the private varaible**
+```
+self.__pin
+```
 
-thus in python , nothing is truly private. 
-*because python is an programming language made for adults.*
-----------------------------------------------------------------------------------------------------------------------------------
-when a private variable is created its accessibility is not available outside the class, but inside the class we will can use the variable.
-so the other methods of the same class can use the private variable. 
+We can even make methods private by using `__` in front of their names.
 
-thus to allow controlled access from outside the class , we use *getter and setter methods* 
+Once a variable/method has been made private, we do not see these in the dropdown after `obj1.`.
 
-getter is used to read / return the value of the private variable
-setter is used to update./ modify the value of the oprivate variable 
+---
 
+## What Happens Internally When Creating a Private Variable?
 
-using setter we can still change the value of the attributes , but not directly , we do it through a method.
-thus inside setter method we apply necessary checks and constraints , which would give the controlled access
----------------------------------------------------------------------------------------------------------------------------------
-Encapsulation definition : 
+Whenever we make a private variable, in memory the name of the variable changes and is updated in the format:
+
+```
+_classname__variablename
+```
+
+**Example:**
+
+```
+self.__pin  →  _Atm__pin
+```
+
+Thus, the variable has been renamed.
+
+When we try to change the value of this private variable from outside, the changes are made to a variable that does not exist because the name has changed.
+
+The code runs on the new name.
+
+Therefore, changes made to `__pin` from outside the class will not affect the program because the program runs on `_Atm__pin`.
+
+Even if the value of the `__attribute` is changed, nothing will happen since the code runs on `_classname__variablename`.
+
+---
+
+## BUT — Important Note
+
+**If we change the value of a private variable using the name in the format `_classname__variablename` from outside the class, we CAN change the value of the private variable.**
+
+Thus, in Python, nothing is truly private.
+
+*Because Python is a programming language made for adults.*
+
+---
+
+## Accessibility of Private Variables
+
+When a private variable is created, it is not accessible outside the class, but it can still be used inside the class.
+
+Other methods of the same class can access the private variable.
+
+To allow controlled access from outside the class, we use **getter and setter methods**.
+
+* **Getter:** Used to read/return the value of the private variable.
+* **Setter:** Used to update/modify the value of the private variable.
+
+Using a setter, we can still change the value of attributes — but not directly. Instead, we do it through a method.
+
+Inside the setter method, we apply necessary checks and constraints to provide controlled access.
+
+---
+
+## Encapsulation Definition
+
 Encapsulation is an OOP concept in which variables are made private to prevent direct modification from outside the class, and controlled access to those variables is provided through methods such as getters and setters.
 
-----------------------------------------------------------------------------------------------------------------------------------
+---
 
-Collection of objects : 
-we can create multiple objects and put them into a list / tuple / dictionary
+## Collection of Objects
 
-----------------------------------------------------------------------------------------------------------------------------------
+We can create multiple objects and store them inside a:
 
-Static Keyword : 
-                            
-if we want to set up an counter in our class , eg -> acountnumber in the atm class
-which is expected to be incremented by 1 as new account is created .
-thus we will setup this variable in the constructor , so that whenever a new object is created the account number will be incremented by 1 
+* List
+* Tuple
+* Dictionary
 
-now we cannot implement this using an instance variable because , if an instance variable is used , for every object the count will be starting from 0 
+---
 
-thus we need a static variable.
-the value of the static variable is same for all the objects and for instance variables it is different for each object
+## Static Keyword
 
-we declare a static variable outside the class.
-also , when we have to call the static variabe we do it in the format : classname.variablename
+If we want to set up a counter in our class (for example, `accountnumber` in an ATM class) which increments by 1 whenever a new account is created, we cannot implement this using an instance variable.
 
-while using the static variable we use the class-name , and while using the instance variable , we use the object name (self).
+Why?
 
-We can also change the value of static variable from outside the class,
-thus to avoid this , we make the static variable private , and use getter and setter if we want to use it in a controlled manner.
+Because if an instance variable is used, the count will start from 0 for every object.
 
-thus if we make a getter method for an static variable , it will return classname.variablename , thus even if we do not pass "self" as a parameter to such method , it is completely okay. 
-but while accessing such methods , we should access them using the class name and not the variable name .
-and such methods are called as static method , and we use static method decorator 
+Thus, we need a **static variable**.
 
------------------------------------------------------------------------------------------------------------------
+---
+
+### Static vs Instance Variable
+
+* **Static variable:** Same value for all objects.
+* **Instance variable:** Different value for each object.
+
+We declare a static variable **outside the constructor but inside the class**, and when calling it, we use the format:
+
+```
+classname.variablename
+```
+
+* While using a static variable → use the **class name**.
+* While using an instance variable → use the **object name (`self`)**.
+
+---
+
+## Can Static Variables Be Changed from Outside?
+
+Yes, static variables can be changed from outside the class.
+
+To avoid this, we make the static variable private and use getters and setters for controlled access.
+
+If we create a getter method for a static variable, it will return:
+
+```
+classname.variablename
+```
+
+Even if we do not pass `self` as a parameter to such methods, it is completely okay.
+
+However, while accessing such methods, we should use the **class name** and not the variable name.
+
+Such methods are called **static methods**, and we use the **static method decorator**.
